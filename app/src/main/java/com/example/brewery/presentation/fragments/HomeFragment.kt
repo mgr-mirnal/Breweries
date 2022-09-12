@@ -84,6 +84,7 @@ class HomeFragment : ViewModelFragment() {
             R.id.action_navigation_home_to_breweryDetailsFragment,
             bundleOf(
                 Pair("name", node.name),
+                Pair("type",node.breweryType),
                 Pair("street", node.street),
                 Pair("city", node.city),
                 Pair("state", node.state),

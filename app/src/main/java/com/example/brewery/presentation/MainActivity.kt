@@ -1,14 +1,18 @@
-package com.example.brewery
+package com.example.brewery.presentation
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.brewery.R
 import com.example.brewery.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.annotation.meta.When
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -31,7 +35,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
+            if (nd.id == R.id.navigation_home) {
+                navView.visibility = View.VISIBLE
+            } else {
+                navView.visibility = View.GONE
+            }
+            //setupActionBarWithNavController(navController, appBarConfiguration)
+            //  navView.setupWithNavController(navController
+        }
     }
 }

@@ -33,6 +33,7 @@ class BreweryDetailsFragment : ViewModelFragment() {
     private fun viewSetup(item: Bundle?) {
         item?.let {
             binding.tvName.text = item.getString("name")
+            binding.tvBreweryType.text = item.getString("type")
             binding.tvStreet.text = item.getString("street")
             binding.tvCity.text = item.getString("city")
             binding.tvState.text = item.getString("state")
